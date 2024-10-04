@@ -1,0 +1,35 @@
+<!-- weather/templates/weather/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold mb-4">Weather App</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="city" placeholder="Enter city" class="border p-2 mr-2" required>
+            <button type="submit" class="bg-blue-500 text-white p-2">Get Weather</button>
+        </form>
+
+        {% if weather_data %}
+            <div class="mt-4">
+                <h2 class="text-2xl">{{ weather_data.name }}</h2>
+                <p>Temperature: {{ weather_data.main.temp }}°C</p>
+                <p>Weather: {{ weather_data.weather.0.description }}</p>
+                <p>Humidity: {{ weather_data.main.humidity }}%</p>
+                <p>Wind Speed: {{ weather_data.wind.speed }} m/s</p>
+            </div>
+        {% endif %}
+
+        <div class="mt-6">
+            <a href="{% url 'history' %}" class="text-blue-500">View Search History</a>
+        </div>
+    </div>
+</body>
+</html>
+
