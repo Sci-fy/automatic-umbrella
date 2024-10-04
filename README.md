@@ -1,1 +1,1 @@
-# automatic-umbrella
+# mini weather app 
