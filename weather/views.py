@@ -5,6 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .utils import get_weather
 from .models import WeatherQuery
 
+# wheather view definitions 
 def home(request):
     weather_data = {}
     if request.method == 'POST':
